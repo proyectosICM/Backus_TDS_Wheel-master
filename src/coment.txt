@@ -1,0 +1,11 @@
+/*
+void changedConnectionCallback() {
+  Serial.printf("Changed connections\n");
+  if(release_node){
+    release_node = false;
+    Serial.println("Entrando en modo reposo");
+    //Entra en SleepMode;
+    esp_deep_sleep_start(); // Es posible que lo llevemos arriba // actualizacion: no funciona
+  }
+}
+*/
