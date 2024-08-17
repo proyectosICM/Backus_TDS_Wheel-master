@@ -4,6 +4,6 @@
 #include "config.h"
 
 void initBoxControl();
-void changeBoxState();
+void changeBoxState(bool open);
 
 #endif

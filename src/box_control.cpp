@@ -26,17 +26,17 @@ void initBoxControl()
     Serial.println(EEPROM.readInt(status_address));
 }
 
-void changeBoxState()
+const int pwmValues[2] = {
+    255 * 52 / 100,  // Valor para la caja cerrada
+    255 * 18 / 100   // Valor para la caja abierta
+};
+
+void changeBoxState(bool open)
 {
-    if (!boxState)
-    {
-        Serial.println("LOTO box openned");
-        ledcWrite(ledChannel, 255 * 18 / 100);
-    }
-    else
-    {
-        Serial.println("LOTO box closed");
-        ledcWrite(ledChannel, 255 * 52 / 100);
-    }
-    boxState = !boxState;
+    // Selecciona el valor PWM basado en el estado deseado
+    int pwmValue = open ? pwmValues[1] : pwmValues[0];
+    
+    Serial.println(open ? "LOTO box opened" : "LOTO box closed");
+    ledcWrite(ledChannel, pwmValue);
+    boxState = open;
 }
