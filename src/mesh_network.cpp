@@ -38,7 +38,6 @@ void handleChangeMessage()
   case 3:
     Serial.println("Reabriendo Caja LOTO");
     changeBoxState(true);
-    EEPROM.commit();
     break;
   default:
     Serial.println("Default");
@@ -46,6 +45,7 @@ void handleChangeMessage()
   }
 
   EEPROM.writeInt(pulses_address, pulses_count);
+  EEPROM.commit();
 }
 
 void handleReleasedMessage()
@@ -62,15 +62,18 @@ void handleReleasedMessage()
   }
 }
 
-void receivedCallback(uint32_t from, String &msg) {
-    Serial.printf("startHere: Received from %u msg=%s\n", from, msg.c_str());
+void receivedCallback(uint32_t from, String &msg)
+{
+  Serial.printf("startHere: Received from %u msg=%s\n", from, msg.c_str());
 
-    if (msg == MESSAGE_CHANGE) {
-        handleChangeMessage();
-    } 
-    else if (msg == MESSAGE_RELEASED) {
-        handleReleasedMessage();
-    }
+  if (msg == MESSAGE_CHANGE)
+  {
+    handleChangeMessage();
+  }
+  else if (msg == MESSAGE_RELEASED)
+  {
+    handleReleasedMessage();
+  }
 }
 
 /*- CODIGO ANTERIOR -*/
