@@ -1,5 +1,6 @@
 #include "box_control.h"
 #include "EEPROM.h"
+#include "global.h"
 
 // Función para inicializar el control de la caja LOTO
 void initBoxControl()

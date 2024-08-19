@@ -367,6 +367,8 @@ int16_t DW1000RangingClass::detectMessageType(byte datas[]) {
 	else if(datas[0] == FC_1 && datas[1] == FC_2_SHORT) {
 		//we have a short mac frame message (poll, range, range report, etc..)
 		return datas[SHORT_MAC_LEN];
+	}else{
+		return 0;
 	}
 }
 
